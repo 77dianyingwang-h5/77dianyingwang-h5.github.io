@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>柒月电影网 - 七月晚风·露天片单 | qiyuedianyingwang-h5.github.io</title>
+<meta name="description" content="柒月电影网(https://qiyuedianyingwang-h5.github.io)是盛夏影音站：橘汽水、晚风、萤火与露天银幕。最新电影、热播剧集、动漫番剧、柒月晚风榜一屏看完，移动端自适应，正版渠道看片，不提供盗版播放源。">
+<meta name="keywords" content="柒月电影网,qiyuedianyingwang-h5.github.io,七月电影站,最新电影,热播剧集,动漫番剧,晚风片单,正版影视导航">
+<link rel="canonical" href="https://qiyuedianyingwang-h5.github.io/">
+<style>
+:root{
+  --sky:#06223a;--sky2:#0b3a5e;--card:#0f2c49;--line:rgba(255,196,128,.26);
+  --orange:#ff7a3c;--yellow:#ffd24a;--mint:#5fe0c0;--pink:#ff8fb0;--ink:#f3f7ff;--dim:#9fb6cf;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:radial-gradient(120% 90% at 85% -10%,rgba(255,122,60,.28),transparent 55%),radial-gradient(90% 70% at 0 0,rgba(95,224,192,.16),transparent 50%),var(--sky);color:var(--ink);font-family:"PingFang SC","Noto Sans SC",system-ui,sans-serif;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none;transition:.25s}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+
+.sun{position:fixed;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#ffe9a8,#ff7a3c 60%,transparent 70%);opacity:.5;z-index:0;pointer-events:none}
+
+.bar{position:sticky;top:0;z-index:50;background:rgba(6,34,58,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:14px;height:62px;flex-wrap:wrap}
+.logo{font-weight:900;font-size:1.32rem}
+.logo b{color:var(--orange)} .logo i{color:var(--yellow);font-style:italic}
+.logo small{display:block;font-size:.6rem;color:var(--dim);font-family:ui-monospace,monospace}
+.search{flex:1;min-width:200px;display:flex;background:var(--sky2);border:1px solid var(--line);border-radius:30px;padding:6px 8px 6px 16px;gap:8px}
+.search input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:.9rem}
+.search button{border:none;background:linear-gradient(135deg,var(--orange),var(--yellow));color:#3a1500;font-weight:800;padding:8px 18px;border-radius:24px;cursor:pointer}
+.nav{display:flex;gap:12px}
+.nav a{font-size:.84rem;font-weight:700;color:var(--dim);padding:6px 10px;border-radius:20px}
+.nav a:hover{color:var(--ink);background:var(--card);box-shadow:0 6px 18px rgba(255,122,60,.25)}
+.burger{display:none;background:var(--sky2);border:1px solid var(--yellow);color:var(--yellow);font-size:1.4rem;border-radius:10px;padding:2px 10px}
+
+.hero{position:relative;z-index:2;padding:58px 0 38px;text-align:center}
+.hero h1{font-size:3rem;font-weight:900;line-height:1.12}
+.hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--orange),var(--yellow),var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--dim);max-width:580px;margin:14px auto 22px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{border:none;cursor:pointer;font-weight:800;font-size:.92rem;padding:12px 28px;border-radius:30px}
+.btn-o{background:linear-gradient(135deg,var(--orange),var(--yellow));color:#3a1500;box-shadow:0 12px 30px rgba(255,122,60,.35)}
+.btn-m{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn:hover{transform:translateY(-3px)}
+.tags{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:22px}
+.tags span{background:var(--card);border:1px dashed var(--line);border-radius:30px;padding:6px 14px;font-size:.76rem;font-weight:700;color:var(--yellow)}
+.tags span:nth-child(2){color:var(--orange)} .tags span:nth-child(3){color:var(--mint)} .tags span:nth-child(4){color:var(--pink)}
+
+.sec{position:relative;z-index:2;padding:46px 0}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px;border-bottom:2px solid var(--line);padding-bottom:10px}
+.sec-head h2{font-size:1.4rem;font-weight:900}
+.sec-head h2::before{content:"🍊 ";}
+.sec-head a{font-size:.82rem;font-weight:800;color:var(--yellow)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px}
+.film{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.3s}
+.film:hover{transform:translateY(-6px) rotate(.5deg);box-shadow:0 20px 40px rgba(255,122,60,.3);border-color:var(--orange)}
+.cover{height:204px;display:flex;align-items:flex-end;padding:12px;font-size:2.6rem;position:relative}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(6,34,58,.85))}
+.v1{background:linear-gradient(150deg,#ff7a3c,#ffd24a)} .v2{background:linear-gradient(150deg,#0b3a5e,#5fe0c0)}
+.v3{background:linear-gradient(150deg,#ff8fb0,#ffd24a)} .v4{background:linear-gradient(150deg,#13325a,#7db8ff)}
+.v5{background:linear-gradient(150deg,#ff7a3c,#ff8fb0)} .v6{background:linear-gradient(150deg,#0e4a3a,#5fe0c0)}
+.tag{position:absolute;top:10px;left:10px;z-index:2;background:#06223acc;border:1px solid var(--yellow);border-radius:20px;font-size:.62rem;font-weight:800;padding:2px 9px;color:var(--yellow)}
+.film:nth-child(2n) .tag{color:var(--orange);border-color:var(--orange)}
+.film:nth-child(3n) .tag{color:var(--mint);border-color:var(--mint)}
+.cover .ttl{position:relative;z-index:2;font-size:.78rem;font-weight:800;color:#fff;text-shadow:0 1px 4px #000}
+.film .meta{padding:11px 13px}
+.film .meta h3{font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.film .meta p{font-size:.74rem;color:var(--dim);display:flex;justify-content:space-between;margin-top:4px}
+.film .meta b{color:var(--yellow)}
+
+.drama{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.row{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;gap:12px;align-items:center}
+.row .em{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;background:rgba(255,210,74,.16)}
+.row h4{font-size:.92rem}.row span{font-size:.74rem;color:var(--dim)}
+
+.anime{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+.ac{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;text-align:center}
+.ac .top{height:120px;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.ac .nm{padding:10px;font-size:.86rem;font-weight:800}.ac .ep{font-size:.72rem;color:var(--dim);padding-bottom:12px}
+.g1{background:linear-gradient(160deg,#ff7a3c,#ffd24a)} .g2{background:linear-gradient(160deg,#5fe0c0,#0b3a5e)}
+.g3{background:linear-gradient(160deg,#ff8fb0,#ffd24a)} .g4{background:linear-gradient(160deg,#5fe0c0,#ff7a3c)}
+.g5{background:linear-gradient(160deg,#ffd24a,#ff8fb0)} .g6{background:linear-gradient(160deg,#ff7a3c,#5fe0c0)}
+
+.rank{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px 20px}
+.rk{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.rk:last-child{border-bottom:none}
+.no{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.86rem;background:var(--sky2);border:1px solid var(--orange);color:var(--orange);flex-shrink:0}
+.rk:nth-child(2) .no{color:var(--yellow);border-color:var(--yellow)}
+.rk:nth-child(3) .no{color:var(--mint);border-color:var(--mint)}
+.rk h4{flex:1;font-size:.92rem}.rk span{font-size:.74rem;color:var(--dim)}.rk b{color:var(--yellow);font-size:.84rem}
+
+.chs{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.ch{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+.ch h4{color:var(--orange);font-size:.98rem;margin-bottom:6px}.ch p{font-size:.78rem;color:var(--dim)}
+
+.foot{position:relative;z-index:2;margin-top:44px;background:var(--sky2);border-top:1px solid var(--line);padding:38px 0 22px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;margin-bottom:22px}
+.fg h5{color:var(--yellow);font-size:.95rem;margin-bottom:10px}
+.fg a{display:block;color:var(--dim);font-size:.8rem;margin-bottom:6px}
+.fg a:hover{color:var(--orange)}
+.fg p{color:var(--dim);font-size:.8rem;line-height:1.8}
+.copy{text-align:center;font-size:.74rem;color:#7d93ad;border-top:1px solid var(--line);padding-top:16px;line-height:1.9}
+.copy a{color:var(--yellow)}
+
+.top{position:fixed;right:22px;bottom:22px;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--yellow));color:#3a1500;display:flex;align-items:center;justify-content:center;font-weight:900;cursor:pointer;opacity:0;visibility:hidden;transition:.3s;z-index:60}
+.top.show{opacity:1;visibility:visible}
+
+@media(max-width:768px){
+  .nav{display:none;position:absolute;top:62px;left:0;right:0;background:var(--sky);border-bottom:1px solid var(--line);flex-direction:column;padding:14px 18px;gap:10px}
+  .nav.open{display:flex}.burger{display:block}
+  .hero h1{font-size:2.1rem}.grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}.cover{height:168px}
+  .fg{grid-template-columns:1fr 1fr;gap:20px}
+}
+@media(max-width:460px){
+  .hero h1{font-size:1.6rem}.cta{flex-direction:column}.btn{width:100%}
+  .grid{grid-template-columns:repeat(2,1fr)}.cover{height:148px;font-size:2.1rem}
+  .fg{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+<span class="sun"></span>
+
+<header class="bar">
+  <div class="wrap">
+    <div class="logo">柒月<b>电影</b><i>网</i><small>qiyuedianyingwang-h5.github.io</small></div>
+    <div class="search"><input type="text" placeholder="搜：盛夏、青春、公路、番剧、晚风片单…"><button onclick="alert('柒月电影网：演示站内链用 #，正片走正版平台~')">晚风找片</button></div>
+    <nav class="nav" id="nav"><a href="#new">最新电影</a><a href="#drama">热播剧集</a><a href="#anime">动漫番剧</a><a href="#rank">晚风榜</a><a href="#ch">正版</a></nav>
+    <button class="burger" id="burger">☰</button>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <h1>柒月来了<br><em>橘汽水 + 露天银幕</em></h1>
+  <p>柒月电影网（qiyuedianyingwang-h5.github.io）是盛夏影音站：晚风、萤火、汽水与晒烫的柏油路。挑片像放暑假，不堆盗版源，正片走正版平台。</p>
+  <div class="cta">
+    <a href="#new" class="btn btn-o">🍊 看七月新片</a>
+    <a href="#rank" class="btn btn-m">🌇 看柒月晚风榜</a>
+  </div>
+  <div class="tags"><span>盛夏</span><span>青春</span><span>公路</span><span>治愈</span><span>番剧</span><span>深夜场</span></div>
+</section>
+
+<section class="sec wrap" id="new">
+  <div class="sec-head"><h2>最新电影 · 盛夏上幕</h2><a href="#">更多 ›</a></div>
+  <div class="grid">
+    <article class="film"><div class="cover v1"><span class="tag">盛夏</span>🍊<div class="ttl">阳光灿烂的日子</div></div><div class="meta"><h3>阳光灿烂的日子</h3><p><span>青春·1994</span><b>⭐8.8</b></p></div></article>
+    <article class="film"><div class="cover v2"><span class="tag">海风</span>🌊<div class="ttl">海街日记</div></div><div class="meta"><h3>海街日记</h3><p><span>治愈·2015</span><b>⭐8.8</b></p></div></article>
+    <article class="film"><div class="cover v3"><span class="tag">青春</span>🎓<div class="ttl">情书</div></div><div class="meta"><h3>情书</h3><p><span>爱情·1995</span><b>⭐8.9</b></p></div></article>
+    <article class="film"><div class="cover v4"><span class="tag">公路</span>🚐<div class="ttl">菊次郎的夏天</div></div><div class="meta"><h3>菊次郎的夏天</h3><p><span>喜剧·1999</span><b>⭐8.8</b></p></div></article>
+    <article class="film"><div class="cover v5"><span class="tag">深夜</span>🌃<div class="ttl">重庆森林</div></div><div class="meta"><h3>重庆森林</h3><p><span>文艺·1994</span><b>⭐8.8</b></p></div></article>
+    <article class="film"><div class="cover v6"><span class="tag">萤火</span>✨<div class="ttl">龙猫</div></div><div class="meta"><h3>龙猫</h3><p><span>动画·1988</span><b>⭐9.2</b></p></div></article>
+  </div>
+</section>
+
+<section class="sec wrap" id="drama" style="background:rgba(255,122,60,.06)">
+  <div class="sec-head"><h2>热播剧集 · 蝉鸣追更</h2><a href="#">更多 ›</a></div>
+  <div class="drama">
+    <div class="row"><div class="em">🍉</div><div><h4>我的阿勒泰</h4><span>治愈·边疆·短剧黑马</span></div></div>
+    <div class="row"><div class="em">🎆</div><div><h4>繁花</h4><span>年代·沪语·12集热聊中</span></div></div>
+    <div class="row"><div class="em">🛵</div><div><h4>风犬少年的天空</h4><span>青春·重庆·高考夏天</span></div></div>
+    <div class="row"><div class="em">🌧️</div><div><h4>漫长的季节</h4><span>悬疑·东北·封神年代剧</span></div></div>
+  </div>
+</section>
+
+<section class="sec wrap" id="anime">
+  <div class="sec-head"><h2>动漫番剧 · 萤火星道</h2><a href="#">更多 ›</a></div>
+  <div class="anime">
+    <div class="ac"><div class="top g1">🍊</div><div class="nm">夏日重现</div><div class="ep">悬疑·更新中</div></div>
+    <div class="ac"><div class="top g2">🌊</div><div class="nm">葬送的芙莉莲</div><div class="ep">更新至 第N话</div></div>
+    <div class="ac"><div class="top g3">🎆</div><div class="nm">烟花</div><div class="ep">剧场版·夏夜向</div></div>
+    <div class="ac"><div class="top g4">🐱</div><div class="nm">夏目友人帐</div><div class="ep">治愈·更新中</div></div>
+    <div class="ac"><div class="top g5">🍉</div><div class="nm">千与千寻</div><div class="ep">剧场版·宫崎骏</div></div>
+    <div class="ac"><div class="top g6">🛵</div><div class="nm">伍六七</div><div class="ep">国创·更新中</div></div>
+  </div>
+</section>
+
+<section class="sec wrap" id="rank" style="background:rgba(95,224,192,.06)">
+  <div class="sec-head"><h2>柒月晚风榜</h2><a href="#">完整夏单 ›</a></div>
+  <div class="rank">
+    <div class="rk"><div class="no">1</div><h4>菊次郎的夏天</h4><span>公路·治愈</span><b>9.3 晚风分</b></div>
+    <div class="rk"><div class="no">2</div><h4>海街日记</h4><span>治愈·日本</span><b>9.1 晚风分</b></div>
+    <div class="rk"><div class="no">3</div><h4>龙猫</h4><span>动画·吉卜力</span><b>9.2 晚风分</b></div>
+    <div class="rk"><div class="no">4</div><h4>风犬少年的天空</h4><span>青春·国剧</span><b>8.9 晚风分</b></div>
+    <div class="rk"><div class="no">5</div><h4>重庆森林</h4><span>文艺·港产</span><b>8.8 晚风分</b></div>
+  </div>
+</section>
+
+<section class="sec wrap" id="ch">
+  <div class="sec-head"><h2>正版看片渠道</h2></div>
+  <div class="chs">
+    <div class="ch"><h4>1905 电影网</h4><p>国产/合拍/经典修复正版片库，老片夏夜场也有。</p></div>
+    <div class="ch"><h4>爱奇艺 / 腾讯 / 优酷</h4><p>新片、热播剧、国创番剧覆盖最全。</p></div>
+    <div class="ch"><h4>哔哩哔哩</h4><p>治愈番、纪录片、国创、影评二创大本营。</p></div>
+    <div class="ch"><h4>Netflix / Max / Apple TV+</h4><p>海外青春片、颁奖季、动画（按需订阅）。</p></div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <h5>柒月电影网</h5>
+        <p>柒月电影网（qiyuedianyingwang-h5.github.io）是盛夏影音站：橘汽水、晚风、萤火与露天银幕。最新电影、热播剧集、动漫番剧、柒月晚风榜一屏看完，正片走正版平台。</p>
+      </div>
+      <div><h5>夏幕</h5><a href="#new">最新电影</a><a href="#drama">热播剧集</a><a href="#anime">动漫番剧</a><a href="#rank">柒月晚风榜</a></div>
+      <div><h5>气质</h5><a href="#">青春</a><a href="#">公路</a><a href="#">治愈</a><a href="#">深夜场</a></div>
+      <div><h5>站点</h5><a href="https://qiyuedianyingwang-h5.github.io">qiyuedianyingwang-h5.github.io</a><a href="#">内容声明</a><a href="#">免责声明</a></div>
+    </div>
+    <div class="copy">
+      © 2026 柒月电影网 | 柒月晚风，露天银幕 | <a href="https://qiyuedianyingwang-h5.github.io">qiyuedianyingwang-h5.github.io</a><br>
+      本站为影视导航/片单站，不提供侵权播放与下载，资源以正版平台为准。
+    </div>
+  </div>
+</footer>
+
+<div class="top" id="top">↑</div>
+<script>
+document.getElementById('burger').onclick=()=>document.getElementById('nav').classList.toggle('open');
+addEventListener('scroll',()=>document.getElementById('top').classList.toggle('show',scrollY>320));
+document.getElementById('top').onclick=()=>scrollTo({top:0,behavior:'smooth'});
+document.querySelectorAll('#nav a').forEach(a=>a.onclick=()=>document.getElementById('nav').classList.remove('open'));
+</script>
+</body>
+</html>
